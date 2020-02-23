@@ -9,8 +9,9 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Login from './components/Pages/Login/Login';
 import Register from './components/Pages/Login/Register';
+import Home from './components/Pages/Home/Home';
 
-import './App.css';
+import './styles/App.scss';
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -39,14 +40,14 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Route path="/login" exact component={Login} />
-        <Route path="/register" exact component={Register} />
+        <Route path="/" exact component={Home} />
+        <Route path="/admin" exact component={Login} />
       </Router>
     </Provider>
   );
 }
 
-const RouteWithLayout = ({ component, ...rest }) => {
+const PrivateRouteWithLayout = ({ component, ...rest }) => {
   return (
     <PrivateRoute {...rest} component={component} />
   );
