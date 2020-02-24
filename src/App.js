@@ -8,8 +8,8 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Login from './components/Pages/Login/Login';
-import Register from './components/Pages/Login/Register';
 import Home from './components/Pages/Home/Home';
+import Store from './components/Pages/Store/Store';
 
 import './styles/App.scss';
 
@@ -41,7 +41,8 @@ function App() {
     <Provider store={store}>
       <Router>
         <Route path="/" exact component={Home} />
-        <Route path="/admin" exact component={Login} />
+        <Route path="/logn" exact component={Login} />
+        <Route path="/store" exact component={Store} />
       </Router>
     </Provider>
   );
