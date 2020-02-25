@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Navbar from '../Home/Navbar';
-
+import Navbar from '../../Layout/Navbar';
+import Footer from '../../Layout/Footer';
 
 export default class Store extends Component {
   constructor(props) {
@@ -84,22 +84,7 @@ export default class Store extends Component {
             </div>
           </div>
         </div>
-        <div className="container footer">
-          <div className="footer__logo">
-            <img src="/logo-white.png" ></img>
-            <div className="social-icons">
-              <i className="instagram"></i>
-              <i className="facebook"></i>
-              <i className="twitter"></i>
-            </div>
-          </div>
-          <div className="footer__links">
-            <ul>
-              <li>Store</li>
-              <li>News</li>
-            </ul>
-          </div>
-        </div>
+        <Footer />
       </div>
     )
   }

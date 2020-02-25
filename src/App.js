@@ -10,6 +10,8 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Login from './components/Pages/Login/Login';
 import Home from './components/Pages/Home/Home';
 import Store from './components/Pages/Store/Store';
+import Post from './components/Pages/Post/Post';
+import Posts from './components/Pages/Post/Posts';
 
 import './styles/App.scss';
 
@@ -41,8 +43,10 @@ function App() {
     <Provider store={store}>
       <Router>
         <Route path="/" exact component={Home} />
-        <Route path="/logn" exact component={Login} />
+        <Route path="/login" exact component={Login} />
         <Route path="/store" exact component={Store} />
+        <Route path="/posts" exact component={Posts} />
+        <Route path="/post/:id" exact component={Post} />
       </Router>
     </Provider>
   );

@@ -20,6 +20,7 @@ connection.once('open', () => {
 })
 
 const usersRouter = require('./routes/users');
+const postsRouter = require('./routes/post');
 // const uploadRouter = require('./routes/upload');
 
 app.use(bodyParser.urlencoded({extended: false}));
@@ -33,6 +34,7 @@ require("./config/passport")(passport);
 
 // Routes
 app.use('/api/users', usersRouter);
+app.use('/api/posts', postsRouter);
 // app.use('/api/upload', uploadRouter);
 
 app.listen(port, () => {

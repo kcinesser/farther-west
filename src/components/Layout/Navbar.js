@@ -28,7 +28,8 @@ export default class Navbar extends Component {
           <div className="nav__menu">
             <ul>
               <li><Link to="/store">Shop</Link></li>
-              <li><a href="#">News</a></li>
+              <li><a href="/posts">Posts</a></li>
+              <li><a href="/events">Events</a></li>
             </ul>
           </div>
         </div>

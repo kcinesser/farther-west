@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import Navbar from './Navbar';
+import Navbar from '../../Layout/Navbar';
+import Footer from '../../Layout/Footer';
 import ModalGallery from '../../ModalGallery';
+import RecentPosts from './RecentPosts';
 
 export default class Home extends Component {
   render() {
@@ -20,7 +22,10 @@ export default class Home extends Component {
           </div>
         </div>
         <div className="container">
-          <h2>Shop</h2>
+          <div className="subhead-link">
+            <h2>Shop</h2>
+            <Link to="/store">Shop All Categories</Link>
+          </div>
           <div className="card-row">
             <div className="card-row__container">
               <Link to="/store?category=mens" className="card overlay" style={{ backgroundImage: 'url(/mens.jpg)'}}>
@@ -51,67 +56,18 @@ export default class Home extends Component {
           </div>
         </div>
 
+        <RecentPosts showLink={true} numPosts={4} />
+
         <div className="container">
-          <h2>News & Events</h2>
+          <div className="subhead-link">
+            <h2>Events</h2><Link to="/events">See All Events</Link>
+          </div>
           <div className="card-row">
             <div className="card-row__container">
-              <Link to="#" className="card card--news">
-                <div className="news__image overlay" style={{ backgroundImage: 'url(/news-1.jpg)' }}></div>
-                <div className="card--news__content">
-                  <p className="news__title">Lorem Ipsum</p>
-                  <p className="news__date">2/22/20</p>
-                  <p className="news__excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-              </Link>
-
-              <Link to="#" className="card card--news">
-                <div className="news__image overlay" style={{ backgroundImage: 'url(/news-2.jpg)' }}></div>
-                <div className="card--news__content">
-                  <p className="news__title">Lorem Ipsum</p>
-                  <p className="news__date">2/22/20</p>
-                  <p className="news__excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-              </Link>
-
-              <Link to="#" className="card card--news">
-                <div className="news__image overlay" style={{ backgroundImage: 'url(/news-3.jpg)' }}></div>
-                <div className="card--news__content">
-                  <p className="news__title">Lorem Ipsum</p>
-                  <p className="news__date">2/22/20</p>
-                  <p className="news__excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-              </Link>
-
-
-              <div className="card card--news">
-                <div className="news__image overlay" style={{ backgroundImage: 'url(/news-4.jpg)' }}></div>
-                <div className="card--news__content">
-                  <p className="news__title">Lorem Ipsum</p>
-                  <p className="news__date">2/22/20</p>
-                  <p className="news__excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
-              </div>
-              
             </div>
           </div>
         </div>
-
-        <div className="container footer">
-          <div className="footer__logo">
-            <img src="/logo-white.png" ></img>
-            <div className="social-icons">
-              <i className="instagram"></i>
-              <i className="facebook"></i>
-              <i className="twitter"></i>
-            </div>
-          </div>
-          <div className="footer__links">
-            <ul>
-              <li>Store</li>
-              <li>News</li>
-            </ul>
-          </div>
-        </div>
+        <Footer />
       </div>
     )
   }
