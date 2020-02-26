@@ -31,13 +31,15 @@ export default class Posts extends Component {
 
     return posts.map(post => {
       return (
-        <Link to={'/post/' + post._id} className="card card--news" key={post._id}>
-          <div className="news__image overlay" style={{ backgroundImage: 'url(' + post.featuredImage + ')' }}></div>
-          <div className="card--news__content">
-            <p className="news__title">{post.title}</p>
-            <p className="news__date"><Moment format="MM/DD/YY" date={post.date} /></p>
-            <p className="news__excerpt">{post.excerpt}</p>
+        <Link to={'/post/' + post._id} className="card card--news overlay" key={post._id}>
+          <div className="news__image" style={{ backgroundImage: 'url(' + post.featuredImage + ')' }}>
+            <div className="card--news__content">
+              <p className="news__title">{post.title}</p>
+              <p className="news__date"><Moment format="MM/DD/YY" date={post.date} /></p>
+              <p className="news__excerpt">{post.excerpt}</p>
+            </div>
           </div>
+
         </Link>
       )
     })

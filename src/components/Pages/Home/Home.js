@@ -70,7 +70,7 @@ export default class Home extends Component {
               <i className="calendar"></i>
               <p className="event__day">SUNDAY</p>
               <p className="event__month">MAR</p>
-              <p className="event__date">13</p>
+              <p className="event__date">15</p>
               <p className="event__location">The Bay, Lincoln, NE</p>
             </div>
           </div>

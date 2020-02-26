@@ -6,6 +6,8 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 
+import ScrollToTop from './components/Layout/ScrollToTop';
+
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import Login from './components/Pages/Login/Login';
 import Home from './components/Pages/Home/Home';
@@ -42,6 +44,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
+        <ScrollToTop />
         <Route path="/" exact component={Home} />
         <Route path="/login" exact component={Login} />
         <Route path="/store" exact component={Store} />

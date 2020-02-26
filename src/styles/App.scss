@@ -56,7 +56,7 @@ a {
     font-weight: 900;
   }
 
-  &:not(card):hover {
+  &.card:hover {
     border-bottom: none;
     font-weight: normal;
   }
@@ -180,12 +180,14 @@ a {
 .overlay {
   position: relative;
 
+
   p, h1, h2, h3, h4, span, button, i {
     position: relative;
   }
 
   &:before {
     content: '';
+    pointer-events: none;
     height: 100%;
     width: 100%;
     left: 0;
@@ -405,8 +407,13 @@ a {
     box-shadow: $shadow-focus;
 
 
-    .card__title {
-      text-decoration: underline;
+    .card__title:after {
+      content: ""; /* This is necessary for the pseudo element to work. */ 
+      margin: 0 auto; /* This will center the border. */
+      width: 25%; /* Change this to whatever width you want. */
+      border-bottom: 3px solid #fff;
+      display: block;
+      position: relative;
     }
   }
 
@@ -414,6 +421,15 @@ a {
     font-size: $font-md;
     color: #fff;
     position: relative;
+
+    &:after {
+      content: ""; /* This is necessary for the pseudo element to work. */ 
+      margin: 0 auto; /* This will center the border. */
+      width: 0%;
+      border-bottom: 3px solid transparent;
+      display: block;
+      transition: 0.3s;
+    }
   }
 }
 
@@ -669,16 +685,29 @@ i {
   display: flex;
   border-radius: 4px;
   box-shadow: $shadow;
+  overflow: hidden;
+  height: 400px;
+
+  &:hover {
+    .featured-event__image {
+      width: 70%;
+    }
+
+    .featured-event__info {
+      width: 30%;
+    }
+  }
 
 
   .featured-event__image {
-    width: 70%;
+    width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     border-bottom-left-radius: 4px;
     border-top-left-radius: 4px;
     text-align: center;
+    transition: 0.3s;
 
     .event__title {
       font-size: $font-xlg;
@@ -692,8 +721,9 @@ i {
   .featured-event__info {
     padding: 4rem 0;
     text-align: center;
-    width: 30%;
-    background-image: #fff;
+    width: 0%;
+    background-color: #fff;
+    transition: 0.3s;
 
     i {
       font-size: $font-lg;
@@ -720,6 +750,7 @@ i {
       font-weight: 300;
       letter-spacing: 1.2;
       text-transform: uppercase;
+      white-space: nowrap;
     }
   }
 }

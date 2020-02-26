@@ -14,8 +14,9 @@ export default class Footer extends Component {
         </div>
         <div className="footer__links">
           <ul>
-            <li>Store</li>
-            <li>News</li>
+            <li>Shop</li>
+            <li>Posts</li>
+            <li>Events</li>
           </ul>
         </div>
       </div>
