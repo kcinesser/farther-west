@@ -56,14 +56,22 @@ export default class Home extends Component {
           </div>
         </div>
 
-        <RecentPosts showLink={true} numPosts={4} />
+        <RecentPosts />
 
-        <div className="container">
+        <div className="container container--event">
           <div className="subhead-link">
-            <h2>Events</h2><Link to="/events">See All Events</Link>
+            <h2>Upcoming</h2><Link to="/events">See All Events</Link>
           </div>
-          <div className="card-row">
-            <div className="card-row__container">
+          <div className="featured-event">
+            <div className="featured-event__image overlay" style={{ backgroundImage: 'url(/news-4.jpg'}}>
+              <p className="event__title">Art at the Bay</p>
+            </div>
+            <div className="featured-event__info">
+              <i className="calendar"></i>
+              <p className="event__day">SUNDAY</p>
+              <p className="event__month">MAR</p>
+              <p className="event__date">13</p>
+              <p className="event__location">The Bay, Lincoln, NE</p>
             </div>
           </div>
         </div>

@@ -9,14 +9,14 @@ export default class RecentPosts extends Component {
 
     this.state = {
       posts: [],
-      loading: true
+      loading: true,
+      offsetValue: 0,
+      offsetIndex: 0
     }
   }
 
   componentDidMount() {
-    let numPosts = this.props.numPosts || '12';
-
-    axios.get('http://localhost:5000/api/posts?count=' + numPosts).then(res => {
+    axios.get('http://localhost:5000/api/posts?count=' + 8).then(res => {
       this.setState({ posts: res.data, loading: false })
     }).catch(err => console.log(err));
 
@@ -27,16 +27,23 @@ export default class RecentPosts extends Component {
 
     return posts.map(post => {
       return (
-        <Link to={'/post/' + post._id} className="card card--news" key={post._id}>
-          <div className="news__image overlay" style={{ backgroundImage: 'url(' + post.featuredImage + ')' }}></div>
-          <div className="card--news__content">
-            <p className="news__title">{post.title}</p>
-            <p className="news__date"><Moment format="MM/DD/YY" date={post.date} /></p>
-            <p className="news__excerpt">{post.excerpt}</p>
+        <Link to={'/post/' + post._id} className="card card--news overlay" key={post._id}>
+          <div className="news__image" style={{ backgroundImage: 'url(' + post.featuredImage + ')' }}>
+            <div className="card--news__content">
+              <p className="news__title">{post.title}</p>
+              <p className="news__date"><Moment format="MM/DD/YY" date={post.date} /></p>
+              <p className="news__excerpt">{post.excerpt}</p>
+            </div>
           </div>
         </Link>
       )
     })
+  }
+
+  handleSlider = (val) => {
+    let offset = this.state.offsetValue + (val * 25);
+
+    this.setState({ offsetValue: offset, offsetIndex: this.state.offsetIndex + val });
   }
 
   render() {
@@ -48,12 +55,19 @@ export default class RecentPosts extends Component {
       <div className="container">
         <div className="subhead-link">
           <h2>Latest Posts</h2>
-          { this.props.showLink ? <Link to="/posts">See All Posts</Link> : '' }
+          <Link to="/posts">See All Posts</Link>
         </div>
-        <div className="card-row">
-          <div className={ "card-row__container" + (this.props.index ? " index" : '') }>
+        <div className="slider-row">
+          <div className="slider-row__container" style={{ transform: "translateX(" + this.state.offsetValue + "%)" }}>
             {this.renderPosts()}
           </div>
+          { this.state.offsetIndex >= 0 ? '' :
+            <div className="slider__buttons slider__buttons--left" onClick={() => this.handleSlider(1)}><i className="left"></i></div>
+          }
+
+          { this.state.offsetIndex <= -(this.state.posts.length - 4) ? '' : 
+            <div className="slider__buttons slider__buttons--right" onClick={() => this.handleSlider(-1)}><i className="right"></i></div>
+          }
         </div>
       </div>
     )

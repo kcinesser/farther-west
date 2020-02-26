@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import Moment from 'react-moment';
 
 import Navbar from '../../Layout/Navbar';
 import Footer from '../../Layout/Footer';
 
-import RecentPosts from '../Home/RecentPosts';
 
 export default class Posts extends Component {
   constructor(props) {
@@ -25,11 +26,24 @@ export default class Posts extends Component {
       this.setState({ posts: res.data, loading: false })}).catch(err => console.log(err));
   }
 
-  render() {
-    if(this.state.loading) {
-      return <div>Loading</div>
-    }
+  renderPosts = () => {
+    let posts = this.state.posts;
 
+    return posts.map(post => {
+      return (
+        <Link to={'/post/' + post._id} className="card card--news" key={post._id}>
+          <div className="news__image overlay" style={{ backgroundImage: 'url(' + post.featuredImage + ')' }}></div>
+          <div className="card--news__content">
+            <p className="news__title">{post.title}</p>
+            <p className="news__date"><Moment format="MM/DD/YY" date={post.date} /></p>
+            <p className="news__excerpt">{post.excerpt}</p>
+          </div>
+        </Link>
+      )
+    })
+  }
+
+  render() {
     return (
       <div>
         <Navbar pageClass="nav--internal" />
@@ -40,7 +54,16 @@ export default class Posts extends Component {
             </div>
           </div>
         </div>
-        <RecentPosts showLink={false} index={true} />
+        <div className="container">
+          <div className="subhead-link">
+            <h2>Latest Posts</h2>
+          </div>
+          <div className="card-row">
+            <div className="card-row__container index" >
+              { this.state.loading ? <div>Loading</div> : this.renderPosts() } 
+            </div>
+          </div>
+        </div>
         <Footer />
       </div>    
     )
