@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 
-export default class Navbar extends Component {
+class Navbar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      hover: false
+      hover: false,
     }
   }
 
@@ -17,8 +17,11 @@ export default class Navbar extends Component {
   }
 
   render() {
+    // nav--internal"\
+    let match = this.props.location.pathname;
+
     return (
-      <div className={"nav " + (this.state.hover ? " nav--dark " : '') + this.props.pageClass } onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
+      <div className={"nav " + (this.state.hover ? " nav--dark " : '') + (match === '/' ? '' :  'nav--internal') } onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
         <div className="nav__container">
           <div className="nav__logo">
             <Link to ="/">
@@ -27,9 +30,9 @@ export default class Navbar extends Component {
           </div>
           <div className="nav__menu">
             <ul>
-              <li><Link to="/store">Shop</Link></li>
-              <li><a href="/posts">Posts</a></li>
-              <li><a href="/events">Events</a></li>
+              <li><NavLink to="/store">Shop</NavLink></li>
+              <li><NavLink to="/posts">Posts</NavLink></li>
+              <li><NavLink to="/events">Events</NavLink></li>
             </ul>
           </div>
         </div>
@@ -37,3 +40,5 @@ export default class Navbar extends Component {
     )
   }
 }
+
+export const NavbarWithRouter = withRouter(Navbar);

@@ -11,7 +11,6 @@ export default class Home extends Component {
 
     return (
       <div>
-        <Navbar />
         <div className="hero overlay">
           <div className="hero__content">
             <div className="container">
@@ -43,7 +42,7 @@ export default class Home extends Component {
             </div>
           </div>
         </div>
-        <div className="container container--full social-section">
+        <div className="container container--full container--social">
           <div className="container--full__child overlay" style={{ backgroundImage: 'url(/social-bg.png)' }}>
             <div className="social-icons">
               <i className="instagram"></i>
@@ -75,7 +74,6 @@ export default class Home extends Component {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     )
   }

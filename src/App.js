@@ -8,7 +8,10 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 import ScrollToTop from './components/Layout/ScrollToTop';
 
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import { NavbarWithRouter } from './components/Layout/Navbar';
+import Footer from './components/Layout/Footer';
+
 import Login from './components/Pages/Login/Login';
 import Home from './components/Pages/Home/Home';
 import Store from './components/Pages/Store/Store';
@@ -45,11 +48,13 @@ function App() {
     <Provider store={store}>
       <Router>
         <ScrollToTop />
+        <NavbarWithRouter />
         <Route path="/" exact component={Home} />
         <Route path="/login" exact component={Login} />
         <Route path="/store" exact component={Store} />
         <Route path="/posts" exact component={Posts} />
         <Route path="/post/:id" exact component={Post} />
+        <Footer />
       </Router>
     </Provider>
   );

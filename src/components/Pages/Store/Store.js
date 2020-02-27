@@ -23,7 +23,6 @@ export default class Store extends Component {
   render() {
     return (
       <div>
-        <Navbar pageClass="nav--internal" />
         <div className="hero hero--internal overlay">
           <div className="hero__content">
             <div className="container">
@@ -84,7 +83,6 @@ export default class Store extends Component {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     )
   }

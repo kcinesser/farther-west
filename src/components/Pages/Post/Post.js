@@ -31,7 +31,6 @@ export default class Post extends Component {
 
     return (
       <div className="post">
-        <Navbar pageClass="nav--internal" />
         <div className="hero hero--internal overlay">
           <div className="hero__content">
             <div className="container">
@@ -45,7 +44,6 @@ export default class Post extends Component {
             <p>{post.body}</p>
           </div>
         </div>
-        <Footer />
       </div>
     )
   }

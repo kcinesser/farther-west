@@ -41,7 +41,7 @@ export default class RecentPosts extends Component {
   }
 
   handleSlider = (val) => {
-    let offset = this.state.offsetValue + (val * 25);
+    let offset = this.state.offsetValue + (val * 50);
 
     this.setState({ offsetValue: offset, offsetIndex: this.state.offsetIndex + val });
   }
@@ -65,7 +65,7 @@ export default class RecentPosts extends Component {
             <div className="slider__buttons slider__buttons--left" onClick={() => this.handleSlider(1)}><i className="left"></i></div>
           }
 
-          { this.state.offsetIndex <= -(this.state.posts.length - 4) ? '' : 
+          { this.state.offsetIndex <= -(this.state.posts.length - 2) ? '' : 
             <div className="slider__buttons slider__buttons--right" onClick={() => this.handleSlider(-1)}><i className="right"></i></div>
           }
         </div>
