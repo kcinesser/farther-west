@@ -78,6 +78,22 @@ a {
   }
 }
 
+button {
+  appearance: none;
+  padding: $one $three;
+  box-shadow: $shadow;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #2995a2;
+
+  &:hover {
+    box-shadow: $shadow-focus;
+    transform: scale(1.05);
+  }
+}
+
 .nav {
   background-color: #fff;
   color: #222;
@@ -894,6 +910,77 @@ i {
 
       @media (min-width: $tablet) {
         font-size: $font-md;
+      }
+    }
+  }
+}
+
+.admin {
+  display: flex;
+
+  .sidebar {
+    width: $fifth;
+    padding: $six $three;
+    background-color: #efefef;
+    
+    a {
+      display: block;
+      margin: $three 0;
+
+      &:hover {
+        border: none;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .admin-content {
+    padding: $six;
+    width: $full;
+
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h2 {
+        margin: $three 0;
+      }
+    }
+
+    .admin-table__header {
+      display: flex;
+      border-bottom: 2px solid #efefef;
+      margin-bottom: $six;
+
+      div {
+        padding: $one $three;
+        font-weight: 900;
+      }
+
+      &.admin-table__header--posts div {
+        width: $fifth;
+      }
+    }
+
+    .admin-table {
+      width: $full;
+
+      .admin-table__item {
+        display: flex;
+
+        div {
+          margin: $two 0;
+          padding: 0 $three;
+        }
+
+        &.admin-table__item--posts div {
+          width: $fifth;
+        }
+
+        &:nth-child(even) {
+          background-color: #efefef;
+        }
       }
     }
   }

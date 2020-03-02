@@ -3,10 +3,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 
-import Navbar from '../../Layout/Navbar';
-import Footer from '../../Layout/Footer';
-
-
 export default class Posts extends Component {
   constructor(props) {
     super(props)
@@ -39,7 +35,6 @@ export default class Posts extends Component {
               <p className="news__excerpt">{post.excerpt}</p>
             </div>
           </div>
-
         </Link>
       )
     })

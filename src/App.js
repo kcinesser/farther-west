@@ -18,7 +18,13 @@ import Store from './components/Pages/Store/Store';
 import Post from './components/Pages/Post/Post';
 import Posts from './components/Pages/Post/Posts';
 
+import Admin from './components/Pages/Admin/Admin';
+
 import './styles/App.scss';
+import AdminPosts from './components/Pages/Admin/AdminPosts';
+import AdminPages from './components/Pages/Admin/AdminPages';
+import AdminEvents from './components/Pages/Admin/AdminEvents';
+import AdminProducts from './components/Pages/Admin/AdminProducts';
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -54,6 +60,11 @@ function App() {
         <Route path="/store" exact component={Store} />
         <Route path="/posts" exact component={Posts} />
         <Route path="/post/:id" exact component={Post} />
+        <PrivateRouteWithLayout path="/admin" exact component={Admin} />
+        <PrivateRouteWithLayout path="/admin/posts" exact component={AdminPosts} />
+        <PrivateRouteWithLayout path="/admin/pages" exact component={AdminPages} />
+        <PrivateRouteWithLayout path="/admin/events" exact component={AdminEvents} />
+        <PrivateRouteWithLayout path="/admin/products" exact component={AdminProducts} />
         <Footer />
       </Router>
     </Provider>
